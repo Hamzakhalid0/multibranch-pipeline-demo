@@ -33,10 +33,10 @@ pipeline {
             }
         }
 
-        stage(' Unit Testing') {
+        stage('Testing Code') {
             steps {
                 bat """
-                echo "Running Unit Tests"
+                echo "Testing Code"
                 """
             }
         }
