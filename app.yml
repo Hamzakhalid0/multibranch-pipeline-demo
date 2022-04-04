@@ -1,0 +1,12 @@
+apps:
+  - script   : ./app.js
+    name     : 'App'
+    instances: 2
+    exec_mode: cluster
+  - script : ./app.js
+    name   : 'App'
+    watch  : true
+    env    :
+      NODE_ENV: development
+    env_production:
+      NODE_ENV: production
