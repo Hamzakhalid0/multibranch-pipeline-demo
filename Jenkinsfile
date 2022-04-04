@@ -11,7 +11,8 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'npm version'
-                sh 'pm2 kill'
+                sh 'npm install pm2'
+                sh 'pm2 update'
                 sh 'pm2 start app.js' 
             }
         }
