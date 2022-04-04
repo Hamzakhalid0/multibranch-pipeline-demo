@@ -12,7 +12,6 @@ pipeline {
                 sh 'npm install'
                 sh 'npm version'
                 sh 'npm install pm2'
-                sh 'pm2 start app.js'
             }
         }
     }
