@@ -5,64 +5,15 @@ pipeline {
           label 'master'
             }
     }
-    options {
-        buildDiscarder logRotator( 
-                    daysToKeepStr: '16', 
-                    numToKeepStr: '10'
-            )
-    }
-
     stages {
         
-        stage('Cleanup Workspace') {
+        stage('build') {
             steps {
-                cleanWs()
-                bat """
-                echo "Cleaned Up Workspace For Project"
-                """
+                bat 'npm install'
+                bat 'npm version'
+                bat 'npm install pm2'
+                bat 'pm2 start app.js'
             }
         }
-
-        stage('Code Checkout') {
-            steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-                ])
-            }
-        }
-
-        stage(' Unit Testing') {
-            steps {
-                bat """
-                echo "Running Unit Tests"
-                """
-            }
-        }
-
-        stage('Code Analysis') {
-            steps {
-                bat """
-                echo "Running Code Analysis"
-                """
-            }
-        }
-
-        stage('Build Deploy Code') {
-            when {
-                branch 'develop'
-            }
-            steps {
-                bat """
-                echo "Building Artifact"
-                """
-
-                bat """
-                echo "Deploying Code"
-                """
-            }
-        }
-
-    }   
+    }
 }
