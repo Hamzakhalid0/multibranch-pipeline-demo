@@ -9,10 +9,10 @@ pipeline {
         
         stage('build') {
             steps {
-                bat 'npm install'
-                bat 'npm version'
-                bat 'npm install pm2'
-                bat 'pm2 start app.js'
+                sh 'npm install'
+                sh 'npm version'
+                sh 'npm install pm2'
+                sh 'pm2 start app.js'
             }
         }
     }
