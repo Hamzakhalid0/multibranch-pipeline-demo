@@ -12,7 +12,7 @@ pipeline {
                 bat 'npm install'
                 bat 'npm version'
                 bat 'npm install pm2'
-                bat 'pm2 start app.js --watch'
+                bat 'pm2 restart app.js'
             }
         }
     }
