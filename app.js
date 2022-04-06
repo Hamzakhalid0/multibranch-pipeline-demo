@@ -2,7 +2,7 @@ var express = require('express')
 var app = express()
 
 app.get('/', function (req, res) {
-  res.send('This page running on master node.')
+  res.send('This page running on master/dev node.')
 })
 
 app.listen(3000, function () {
