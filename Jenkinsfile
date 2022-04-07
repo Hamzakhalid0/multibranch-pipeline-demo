@@ -1,9 +1,6 @@
 pipeline {
 
     agent {
-      node {
-        'Master'
-           }
     }
     stages {
         
